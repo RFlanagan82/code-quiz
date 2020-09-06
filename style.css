@@ -11,8 +11,10 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    margin-left: 100px;
     margin: 50px;
-    padding: 25px;
+    padding: 20px;
     box-shadow: 0 0 10px 2px;
 }
 
@@ -50,6 +52,7 @@ html {
     background-color: yellow;
     color: #CA33FF
 }
+
 
 .hide {
     display: none;

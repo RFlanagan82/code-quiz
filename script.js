@@ -3,6 +3,22 @@ console.log("Hello World");
 //WHEN I click the start button
 //THEN a timer starts and I am presented WITH a question
 
+var startButton = document.getElementById("start-btn");
+var timer = document.getElementById("countdowntimer");
+var highscores = document.getElementById("highscoresBtn");
+var startContainer = document.getElementById("startbox");
+var questionContainerA = document.getElementById("questioncontainerA");
+var correctAnswer = document.getElementById("correctanswer");
+var wrongAnswer = document.getElementById("wronganswer");
+
+startButton.addEventListener("click", startGame)
+
+function startGame() {
+    console.log("Game Started");
+    startContainer.style.display = "none";
+    questionContainerA.style.display = "block";
+
+}
 
 
 
