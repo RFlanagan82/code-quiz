@@ -29,8 +29,8 @@ html {
 }
 
 #start-btn:hover {
-    background-color: yellow;
-    color: #CA33FF
+    background-color: green;
+    color: white
 }
 
 .btn {
@@ -49,4 +49,8 @@ html {
 .btn:hover {
     background-color: yellow;
     color: #CA33FF
+}
+
+.hide {
+    display: none;
 }
