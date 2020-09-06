@@ -4,21 +4,35 @@ console.log("Hello World");
 //THEN a timer starts and I am presented WITH a question
 
 var startButton = document.getElementById("start-btn");
-var timer = document.getElementById("countdowntimer");
+var timerEl = document.getElementById("countdowntimer");
 var highscores = document.getElementById("highscoresBtn");
 var startContainer = document.getElementById("startbox");
 var questionContainerA = document.getElementById("questioncontainerA");
 var correctAnswer = document.getElementById("correctanswer");
 var wrongAnswer = document.getElementById("wronganswer");
+var secondsLeft = 60;
 
-startButton.addEventListener("click", startGame)
+startButton.addEventListener("click", startGame);
 
 function startGame() {
     console.log("Game Started");
     startContainer.style.display = "none";
     questionContainerA.style.display = "block";
+    function setTime() {
+        var timerInterval = setInterval(function(){
+            secondsLeft--;
+            timerEl.textContent = secondsLeft;
+    
+            if(secondsLeft === 0) {
+                clearInterval(timerInterval);
+                alert("Game Over. You ran out of time!");
+            }
+        }, 1000);
+    }
+    setTime();
 
 }
+
 
 
 
