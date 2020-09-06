@@ -1,0 +1,28 @@
+html {
+    font-family: 'Varela Round', sans-serif;
+}
+
+#topline {
+    display: flex;
+    justify-content: space-between;
+}
+
+#startbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+    padding: 25px;
+
+}
+
+#start-btn {
+    display:inline-block;
+    background-color: #CA33FF;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin: 5px;
+
+}

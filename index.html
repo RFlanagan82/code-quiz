@@ -3,12 +3,39 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Code Quiz</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./style.css">
     </head>
     <body>
+        <div class="container">
+            <div class= "row" id="topline">
+                <div id="viewHighscoresBtn">
+                    <button>View Highscores</button>
+                </div>
+                <div id="timer">
+                    <p id="countdown-timer">Timer: 0</p>
+                </div>
+            </div>
+        </div>
+ 
+        <div class="container">
+            <div class="row" id="startbox">
+                <div id="start"></div>
+                <h2 class="quizstartheader">Coding Quiz Challenge</h2>
+                <p class="startText">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your scoretime by ten seconds.</p>
+                <button id="start-btn" class="start-btn btn">Start Quiz
+                </button>
+            </div>
+        </div>
+        
+        
+        
+        
+        
         <script src="./script.js"></script>
     </body>
 </html>
