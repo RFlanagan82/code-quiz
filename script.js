@@ -12,10 +12,12 @@ var choiceA = document.getElementById("A");
 var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
 var choiceD = document.getElementById("D");
+var correctAnswer = document.getElementById("correctanswer");
+var wrongAnswer = document.getElementById("wronganswer");
+var submitBtn = document.getElementById("submitbtn");
+var recordScore = document.getElementById("recordscore");
 var secondsLeft = 60;
-var score = 0;
-
-var lastQuestionIndex = questions.length -1;
+var userScore = score; //need to aggregate the total score of the user and define it here.
 
 
 //Question Array
@@ -68,17 +70,15 @@ var questions = [
 
 ]
 
-
-
-//WHEN I click the start button
-//THEN a timer starts and I am presented WITH a question
+    //WHEN I click the start button
+    //THEN a timer starts and I am presented WITH a question
 
 startButton.addEventListener("click", startGame);
 
 function startGame() {
     console.log("Game Started");
     startContainer.style.display = "none";
-    questionContainer.style.display = "block";
+    var scoreCounter = 0;
     function setTime() {
         var timerInterval = setInterval(function(){
             secondsLeft--;
@@ -86,63 +86,70 @@ function startGame() {
     
             if(secondsLeft === 0) {
                 clearInterval(timerInterval);
-                alert("Game Over. You ran out of time!"); //Edit this to forward to "All Done Page"
+                gameOver();
             }
         }, 1000);
     }
-    setTime();
+    
+    //WHEN I answer a question
+    //THEN I am presented with another question
 
-}
-
-//WHEN I answer a question
-//THEN I am presented with another question
-
-
-function renderQuestion() {
-    var q = questions[runningQuestionIndex];
-    question.innerHTML = "<h2>" + q.question + "</h2>";
-    choiceA.innerHTML = q.choiceA;
-    choiceB.innerHTML = q.choiceB;
-    choiceC.innerHTML = q.choiceC;
-    choiceD.innerHTML = q.choiceD;
-}
-
-var runningQuestionIndex = 0;
-
-//When I answer a question correctly
-//Then I get points 
-//WHEN I answer a question incorrectly
-//THEN time is subtracted from the clock
-
-function checkAnswer(answer) {
-    if (questions[runningQuestionIndex].correct == answer) {
-        console.log("Answer is correct.");
-        score + 20;
-        correctanswer.style.display = "block";
-    } else {
-        console.log("Answer is wrong.");
-        secondsLeft = -10;
-    }
-    if (runningQuestionIndex < lastQuestionIndex) {
-        runningQuestionIndex++;
+    quizEl.style.display = "block";
+    for(var i = 0; i < questions.length; i++){
         renderQuestion();
-    } else {
-        clearInterval(timerEl);
-        gameOver();
+
+        function renderQuestion() { // I can't get the question title and buttons to work.
+            questions.innerHTML = q.question;
+            choiceA.innerHTML = q.choiceA;
+            choiceB.innerHTML = q.choiceB;
+            choiceC.innerHTML = q.ChoiceC;
+            choiceD.innerHTML = q.ChoiceD;
+        
+
+            var answer = question.correct
+
+            //When I answer a question correctly
+            //Then I get points 
+            if (answer) {
+            console.log("Answer is correct.");
+            scoreCounter + 20;
+            correctAnswer.style.display = "block";
+            }
+
+            //WHEN I answer a question incorrectly
+            //THEN time is subtracted from the clock
+            else {
+            console.log("Answer is wrong.");
+            secondsLeft = -10;
+            wrongAnswer.style.display = "block";
+            }
+        }
     }
 
-}
-//WHEN all questions are answered or the timer reaches 0
-//THEN the game is over
+    //WHEN all questions are answered or the timer reaches 0
+    //THEN the game is over
 
-function gameOver () {
+        function gameOver () {
+        console.log("Game Over!");
+        questionContainer.style.display = "none";
+        recordScore.style.display = "block";
+        }
 
     
-}
+    //WHEN the game is over
+    //THEN I can save my initials and score
+
+
+    }
+
+
+
+
+    
 
 
 
 
 
-//WHEN the game is over
-//THEN I can save my initials and score
+
+

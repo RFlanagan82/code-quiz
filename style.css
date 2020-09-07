@@ -57,3 +57,14 @@ html {
 .hide {
     display: none;
 }
+
+#recordscore {
+    margin-left: 100px;
+    margin: 50px;
+    padding: 20px;
+    box-shadow: 0 0 10px 2px;
+}
+
+.btn-primary {
+    margin-top: 20px;
+}
