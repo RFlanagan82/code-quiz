@@ -16,8 +16,11 @@
                 <div id="highscoresBtn">
                     <button>View Highscores</button>
                 </div>
-                <div id="timer">
-                    <p id="countdowntimer">Timer: 0</p>
+                <div id ="score">Score:
+                    <p id="scorecounter">0</p>
+                </div>
+                <div id="timer">Timer:
+                    <p id="countdowntimer">0</p>
                 </div>
             </div>
         </div>
@@ -37,25 +40,22 @@
         </div>
 
         <div class="container">
-            <div id="questioncontainerA" class="hide">
-                <div id="question1">
-                    <h2 class="questiondiv" id="questiontext">The condition in an if/else statement is enclosed within __________.</h2>
+            <div id="quiz" class="hide">
+                <div id="question">
+                    <h2 class="questiondiv" id="questiontext">Question</h2>
                 </div>
-                <div id="answer-btns" class="btngroup">
-                    <button class="btn">Answer 1</button>
-                    <button class="btn">Answer 2</button>
-                    <button class="btn">Answer 3</button>
-                    <button class="btn">Answer 4</button>
+                <div id="choices" class="btngroup">
+                    <button class="btn" id="A" onclick="checkAnswer('A')">A</button>
+                    <button class="btn" id= "B" onclick="checkAnswer('B')">B</button>
+                    <button class="btn" id="C" onclick="checkAnswer('C')">C</button>
+                    <button class="btn" id="D" onclick="checkAnswer('D')">D</button>
                     <hr>
                 </div>
-                <div id ="correctanswer" class="hidecorrect">Correct!
+                <div id ="correctanswer" class="hide">Correct!
                 </div>
-                <div id ="wronganswer" class="hidewrong">Wrong.</div>
+                <div id ="wronganswer" class="hide">Wrong.</div>
             </div>
         </div>
-        
-
-        
         
         
         

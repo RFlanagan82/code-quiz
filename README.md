@@ -9,3 +9,5 @@ Build a timed code quiz with multiple-choice questions. This app will run in the
 <!--https://stackoverflow.com/questions/42517956/stack-buttons-vertically>
 
 <!--Hover Button Properties: https://www.w3schools.com/css/css3_buttons.asp>
+
+<!--Timer Intervals: Review of material presented in GT-ATL Repo Directory #4 - Activity #8.>
