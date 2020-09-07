@@ -7,13 +7,15 @@ var scoreCounter = document.getElementById("scorecounter");
 var highscores = document.getElementById("highscoresBtn");
 var startContainer = document.getElementById("startbox");
 var questionEl = document.getElementById("questiontext");
+var quizEl = document.getElementById("quiz");
 var choiceA = document.getElementById("A");
 var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
 var choiceD = document.getElementById("D");
 var secondsLeft = 60;
-var points = 20;
-var userScore = localStorage.getItem(points);
+var score = 0;
+
+var lastQuestionIndex = questions.length -1;
 
 
 //Question Array
@@ -76,7 +78,7 @@ startButton.addEventListener("click", startGame);
 function startGame() {
     console.log("Game Started");
     startContainer.style.display = "none";
-    questionContainerA.style.display = "block";
+    questionContainer.style.display = "block";
     function setTime() {
         var timerInterval = setInterval(function(){
             secondsLeft--;
@@ -96,43 +98,47 @@ function startGame() {
 //THEN I am presented with another question
 
 
-
-
-function setNextQuestion (){
-
-
+function renderQuestion() {
+    var q = questions[runningQuestionIndex];
+    question.innerHTML = "<h2>" + q.question + "</h2>";
+    choiceA.innerHTML = q.choiceA;
+    choiceB.innerHTML = q.choiceB;
+    choiceC.innerHTML = q.choiceC;
+    choiceD.innerHTML = q.choiceD;
 }
 
-
-
-
-
-
+var runningQuestionIndex = 0;
 
 //When I answer a question correctly
 //Then I get points 
-
-correctAnswerBtn.addEventListener("click", addPoints);
-
-function addPoints () {
-    points ++;
-
-}
-
-
 //WHEN I answer a question incorrectly
 //THEN time is subtracted from the clock
 
-wrongAnswer.addEventListener("click", addPenalty);
+function checkAnswer(answer) {
+    if (questions[runningQuestionIndex].correct == answer) {
+        console.log("Answer is correct.");
+        score + 20;
+        correctanswer.style.display = "block";
+    } else {
+        console.log("Answer is wrong.");
+        secondsLeft = -10;
+    }
+    if (runningQuestionIndex < lastQuestionIndex) {
+        runningQuestionIndex++;
+        renderQuestion();
+    } else {
+        clearInterval(timerEl);
+        gameOver();
+    }
 
-function addPenalty() {
-    secondsLeft = -10;
 }
-
 //WHEN all questions are answered or the timer reaches 0
 //THEN the game is over
 
+function gameOver () {
 
+    
+}
 
 
 
@@ -140,23 +146,3 @@ function addPenalty() {
 
 //WHEN the game is over
 //THEN I can save my initials and score
-
-
-
-
-
-
-//------Play Code-----
-
-//if (correctAnswerBtn) {
-   // correctAnswerReply.style.display = "block";
-   // correctAnswerReply.style.display - "none";
-   // questionContainerA.style.display = "none";
-    //questionContainerB.style.display = "block";
-
-//} else {
-   // wrongAnswerReply.style.display = "block";
-   // wrongAnswerReply.style.display = "none";
-   // questionContainerA.style.display = "none";
-   // questionContainerB.style.display = "block";
-//};
