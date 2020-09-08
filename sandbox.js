@@ -1,4 +1,4 @@
-//Question Array
+//QuizData Array
 
 var quizData = [
     {
@@ -54,12 +54,12 @@ var quizData = [
 
     var currentQuiz = 0;
 
-    function renderQuestion()
+    function loadQuiz();
 
-    function renderQuestion() {
+    function loadQuiz() {
     var currentQuizData = quizData.currentQuiz;
 
-    questionEl.textContent = currentQuizData.question
+    questionEl.textContent = currentQuizData.question;
     choiceA.textContent = quizData.choiceA;
     choiceB.textContent = quizData.choiceB;
     choiceC.textContent = quizData.choiceC;
@@ -73,7 +73,7 @@ var quizData = [
     var answer = quizData.correct;
 
     for(var i = 0; i < questions.length; i++){
-        renderQuestion();
+        loadQuiz();
 
 
             //When I answer a question correctly
