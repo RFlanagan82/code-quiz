@@ -1,5 +1,4 @@
 console.log("Hello World");
-console.log("start-btn");
 
 //Define Variables
 var startButton = document.getElementById("start-btn");
@@ -7,7 +6,7 @@ var timerEl = document.getElementById("countdowntimer");
 var scoreCounter = document.getElementById("scorecounter");
 var highscores = document.getElementById("highscoresBtn");
 var startContainer = document.getElementById("startbox");
-
+var choiceBtnEl = document.getElementById("btngroup")
 var quizEl = document.getElementById("quiz");
 
 var correctAnswer = document.getElementById("correctanswer");
@@ -15,8 +14,12 @@ var wrongAnswer = document.getElementById("wronganswer");
 var submitBtn = document.getElementById("submitbtn");
 var recordScore = document.getElementById("recordscore");
 
-var userScore = score; //need to aggregate the total score of the user and define it here.
+var position = 0;
 
+var userScore = JSON.parse(localStorage.getItem("name")) | [] 
+
+//need to aggregate the total score of the user and define it here.
+localStorage.setItem("name",JSON.stringify(userScore));
 
 
 
@@ -51,51 +54,35 @@ function startGame() {
     //THEN I am presented with another question
 
     //QuizData Array
-
-var quizData = [
+    var quizData = [
     {
         question: "Commonly used data types DO NOT include ________.",
-        choiceA: "Strings",
-        choiceB: "Booleans",
-        choiceC: "Numbers",
-        choiceD: "Alerts",
-        correct: "D"
+        choices: ["Strings", "Booleans","Numbers", "Alerts"],
+        correct: 3
     },
     
     {
         question: "A very useful tool during development and debugging for printing content to the debugger is _____.",
-        choiceA: "JavaScript",
-        choiceB: "Console Log",
-        choiceC: "For Loops",
-        choiceD: "Bash/Terminal",
-        correct: "B"
+        choices: ["JavaScript","Console Log", "For Loops", "Bash/Terminal"],
+        correct: 1
     },
     
     {
         question: "String values must be enclosed within __________ when being assigned to variables.",
-        choiceA: "Curly Brackets",
-        choiceB: "Parentheses",
-        choiceC: "Quotations",
-        choiceD: "Commas",
-        correct: "C"
+        choices: ["Curly Brackets","Parentheses", "Quotations","Commas"],
+        correct: 2
     },
     
     {
         question: "Arrays in JavaScript can be used to store _______.",
-        choiceA: "Numbers & Strings",
-        choiceB: "Other Arrays",
-        choiceC: "Booleans",
-        choiceD: "All of the Above",
-        correct: "D"
+        choices: ["Numbers & Strings", "Other Arrays", "Booleans", "All of the Above"],
+        correct: 3
     },
     
     {
         question: "The condition in an if / else statement is enclosed within _____.",
-        choiceA: "Parentheses",
-        choiceB: "Curly Brackets",
-        choiceC: "Square Brackets",
-        choiceD: "Quotes",
-        correct: "A"
+        choices:["parentheses","curly brackets","square brackets","quotes"],
+        correct: 0
     },
     
     ];
@@ -109,20 +96,32 @@ var quizData = [
 
     //Set up loadQuiz Function
     var currentQuiz = 0;
-
-    loadQuiz(0);
+    position++;
+    loadQuiz(position);
 
     function loadQuiz(currentQuiz) {
-    var quiz = quizData[currentQuiz];
+        var quiz = quizData[currentQuiz];
 
         //Loading the current quiz questions. DO NOT MOVE.
-    questionEl.textContent = quiz.question; 
-    choiceA.textContent = quiz.choiceA;
-    choiceB.textContent = quiz.choiceB;
-    choiceC.textContent = quiz.choiceC;
-    choiceD.textContent = quiz.choiceD;
-    }
+        questionEl.textContent = quiz.question; 
+        choiceA.textContent = quiz.choices[0];
+        choiceB.textContent = quiz.choices[1];
+        choiceC.textContent = quiz.choices[2];
+        choiceD.textContent = quiz.choices[3];
 
+        document.querySelector(".btngroup").addEventListener("click",function(event){
+            event.preventDefault();
+            if(event.target == quizData[currentQuiz].choices[quizData[position].correct]) {
+                console.log("Answer is correct.");
+                scoreCounter + 20;
+                correctAnswer.style.display = "block";
+            } else {
+                console.log("Answer is wrong.");
+                secondsLeft = -10;
+                wrongAnswer.style.display = "block";
+            }
+        }
+    };
 
 
     //When I answer a question correctly
@@ -136,6 +135,8 @@ var quizData = [
     //THEN time is subtracted from the clock
 
 
+
+    
     //WHEN all questions are answered or the timer reaches 0
     //THEN the game is over
 
