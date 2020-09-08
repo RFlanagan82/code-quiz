@@ -35,6 +35,26 @@ html {
     color: white
 }
 
+#quiz {
+    justify-content: center;
+    align-items: left;
+    margin-left: 100px;
+    margin: 50px;
+    padding: 20px;
+    box-shadow: 0 0 10px 2px;
+}
+
+.btngroup {
+    display: block;
+    background-color: #CA33FF;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin: 5px;
+    transition-duration: 0.5s;
+}
+
 .btn {
     --hue: var(--hue-neutral);
     border: 1px solid hsl(var(--hue), 100%, 30%);
@@ -53,6 +73,10 @@ html {
     color: #CA33FF
 }
 
+.choice:hover {
+    background-color: yellow;
+    color: #CA33FF
+}
 
 .hide {
     display: none;
