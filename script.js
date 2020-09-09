@@ -13,7 +13,7 @@ var correctAnswer = document.getElementById("correctanswer");
 var wrongAnswer = document.getElementById("wronganswer");
 var submitBtn = document.getElementById("submitbtn");
 var recordScore = document.getElementById("recordscore");
-
+var gameOver = document.getElementById("gameOver");
 var position = 0;
 var userScore = JSON.parse(localStorage.getItem("initials")) | [] 
 var initials = document.getElementById("initials");
@@ -29,7 +29,7 @@ function startGame() {
     startContainer.style.display = "none";
     quizEl.style.display = "block";
     
-    var secondsLeft = 60;
+    var secondsLeft = 75;
 
     function setTime() {
         var timerInterval = setInterval(function(){
@@ -96,6 +96,7 @@ function startGame() {
     function loadQuiz(currentQuiz) {
         var quiz = quizData[currentQuiz];
 
+        if (questionEl !== 5) {
         //Loading the current quiz questions. DO NOT MOVE.
         questionEl.textContent = quiz.question; 
         choiceA.textContent = quiz.choices[0];
@@ -106,10 +107,19 @@ function startGame() {
         choiceB.onclick = questionClick;
         choiceC.onclick = questionClick;
         choiceD.onclick = questionClick;
-        //quiz.correct[i].onclick = checkAnswer; Not sure if this captures the right answer or not
+
+        } else {
+        gameOver();
+        }
+        function gameOver() {
+            quizEl.style.display = "none";
+            recordScore.style.display = "block";
+        }
+
 
     }
     //Set up questionClick function to log button click and advance question.
+
     function questionClick() {
         console.log("I was clicked.");
         console.log(this);
@@ -119,21 +129,29 @@ function startGame() {
 
     //Determine when to stop advancing questions (if/else conditional?)
 
-    if (loadQuiz(5)) {
-        position++;
-        
 
-    }else {
-        quizEl.style.display = "none";
-        recordScore.style.display = "block";
+
+
+
+    //When I answer a question correctly or incorrectly
+
+    choiceBtnEl.addEventListener("click",function(){
+        event.stopPropagation();
+        userChoice();
+    })
+   
+   function userChoice(){
+    if(userChoice === quizData.correct) {
+
+    } else {
+
+
     }
 
+   }
+   
 
 
-    //When I answer a question correctly
-    //Then I get points 
-
-    //function checkAnswer ()
 
 }
     

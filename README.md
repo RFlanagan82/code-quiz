@@ -33,6 +33,8 @@ At this point I was not able to finish the exercise wher I set the initials of t
 
 On September 9th, 2020, TA - Stanley Lewis helped me understand how to hard code the logic for onclick event of my button options and advancing my questions.
 
+Sami Sully helped me with formatting...
+
 ## Resources
 
 I used the following resources in my research for this assignment:
