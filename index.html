@@ -42,10 +42,10 @@
         <div class="quizcontainer">
             <div id="quiz" class="hide">
                 <h2 class="questiondiv" id="questiontext">Question</h2>
-                    <button class="btngroup" id="choiceA" onclick="renderQuestion()">A</button>
-                    <button class="btngroup" id="choiceB" onclick="checkAnswer()">B</button>
-                    <button class="btngroup" id="choiceC" onclick="checkAnswer()">C</button>
-                    <button class="btngroup" id="choiceD" onclick="checkAnswer()">D</button>
+                    <button class="btngroup" id="choiceA">A</button>
+                    <button class="btngroup" id="choiceB">B</button>
+                    <button class="btngroup" id="choiceC">C</button>
+                    <button class="btngroup" id="choiceD">D</button>
                     <hr>
                 <div id ="correctanswer" class="hide">Correct!</div>
                 <div id ="wronganswer" class="hide">Wrong.</div>
@@ -59,7 +59,7 @@
                     <p id="userscore">0</p>
                 </div>
                 <form>
-                    <div class="recordinitials">
+                    <div class="recordinitials" id="initals">
                         <label for="userinitials">Enter Initials</label>
                         <input type="text" class="form-control" id="userinitialstext">
                     </div>

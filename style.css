@@ -92,3 +92,14 @@ html {
 .btn-primary {
     margin-top: 20px;
 }
+
+#submit-btn {
+    display:inline-block;
+    background-color: #CA33FF;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin: 5px;
+    transition-duration: 0.5s;
+}

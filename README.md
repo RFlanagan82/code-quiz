@@ -11,3 +11,5 @@ Build a timed code quiz with multiple-choice questions. This app will run in the
 <!--Hover Button Properties: https://www.w3schools.com/css/css3_buttons.asp>
 
 <!--Timer Intervals: Review of material presented in GT-ATL Repo Directory #4 - Activity #8.>
+
+<!--TA - Stanley Lewis helped me understand how to hard code the logic for onclick event of my button options and advancing my questions.>

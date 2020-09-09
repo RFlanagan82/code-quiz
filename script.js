@@ -8,18 +8,17 @@ var highscores = document.getElementById("highscoresBtn");
 var startContainer = document.getElementById("startbox");
 var choiceBtnEl = document.getElementById("btngroup")
 var quizEl = document.getElementById("quiz");
-
+var scoreCounter = document.getElementById("scorecounter");
 var correctAnswer = document.getElementById("correctanswer");
 var wrongAnswer = document.getElementById("wronganswer");
 var submitBtn = document.getElementById("submitbtn");
 var recordScore = document.getElementById("recordscore");
 
 var position = 0;
+var userScore = JSON.parse(localStorage.getItem("initials")) | [] 
+var initials = document.getElementById("initials");
 
-var userScore = JSON.parse(localStorage.getItem("name")) | [] 
 
-//need to aggregate the total score of the user and define it here.
-localStorage.setItem("name",JSON.stringify(userScore));
 
 
 
@@ -95,9 +94,7 @@ function startGame() {
     var choiceD = document.getElementById("choiceD");
 
     //Set up loadQuiz Function
-    var currentQuiz = 0;
-    position++;
-    loadQuiz(position);
+    loadQuiz(0)
 
     function loadQuiz(currentQuiz) {
         var quiz = quizData[currentQuiz];
@@ -108,35 +105,44 @@ function startGame() {
         choiceB.textContent = quiz.choices[1];
         choiceC.textContent = quiz.choices[2];
         choiceD.textContent = quiz.choices[3];
+        choiceA.onclick = questionClick;
+        choiceB.onclick = questionClick;
+        choiceC.onclick = questionClick;
+        choiceD.onclick = questionClick;
+    }
 
-        document.querySelector(".btngroup").addEventListener("click",function(event){
-            event.preventDefault();
-            if(event.target == quizData[currentQuiz].choices[quizData[position].correct]) {
-                console.log("Answer is correct.");
-                scoreCounter + 20;
-                correctAnswer.style.display = "block";
-            } else {
-                console.log("Answer is wrong.");
-                secondsLeft = -10;
-                wrongAnswer.style.display = "block";
-            }
-        }
-    };
-
-
+    function questionClick() {
+        console.log("I was clicked.");
+        console.log(this);
+        position++;
+        loadQuiz(position);
+    }
+    /*
+  
     //When I answer a question correctly
     //Then I get points 
 
-    var scoreCounter = 0;
+
+    /*if() 
+            
+            //have it check for correct after that.
+            {
+                console.log("Answer is correct.");
+                scoreCounter = scoreCounter + 20;
+                correctAnswer.style.display = "block";
 
 
-
-    //WHEN I answer a question incorrectly
-    //THEN time is subtracted from the clock
-
-
-
+            //WHEN I answer a question incorrectly
+            //THEN time is subtracted from the clock
+            } else {
+                console.log("Answer is wrong.");
+                secondsLeft = secondsLeft - 10;
+                wrongAnswer.style.display = "block";
+            }
+        });*/
     
+
+
     //WHEN all questions are answered or the timer reaches 0
     //THEN the game is over
 
@@ -146,5 +152,12 @@ function startGame() {
 
     //WHEN the game is over
     //THEN I can save my initials and score
+    
+    localStorage.setItem("initals",JSON.stringify(userScore));
+
+    
+
+//need to aggregate the total score of the user and define it here.
+
 
 }
