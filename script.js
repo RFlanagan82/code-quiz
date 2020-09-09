@@ -19,9 +19,6 @@ var userScore = JSON.parse(localStorage.getItem("initials")) | []
 var initials = document.getElementById("initials");
 
 
-
-
-
     //WHEN I click the start button
     //THEN a timer starts and I am presented WITH a question
 
@@ -41,7 +38,7 @@ function startGame() {
     
             if(secondsLeft === 0) {
                 clearInterval(timerInterval);
-                gameOver();
+                //gameOver(); --- Need to advance to gameOver using a function defined below.
             }
         }, 1000);
     }
@@ -109,18 +106,45 @@ function startGame() {
         choiceB.onclick = questionClick;
         choiceC.onclick = questionClick;
         choiceD.onclick = questionClick;
-    }
+        //quiz.correct[i].onclick = checkAnswer; Not sure if this captures the right answer or not
 
+    }
+    //Set up questionClick function to log button click and advance question.
     function questionClick() {
         console.log("I was clicked.");
         console.log(this);
         position++;
         loadQuiz(position);
+        //checkAnswer() function needed
+
+    //Determine when to stop advancing questions (if/else conditional?)
+
+    if (loadQuiz(5)) {
+        position++;
+        
+
+    }else {
+        quizEl.style.display = "none";
+        recordScore.style.display = "block";
     }
-    /*
-  
+
+
+
     //When I answer a question correctly
     //Then I get points 
+
+    //function checkAnswer ()
+
+}
+    
+    
+    
+    
+    
+    
+    /*
+  
+
 
 
     /*if() 
