@@ -33,7 +33,14 @@ At this point I was not able to finish the exercise wher I set the initials of t
 
 On September 9th, 2020, TA - Stanley Lewis helped me understand how to hard code the logic for onclick event of my button options and advancing my questions.
 
-Sami Sully helped me with formatting...
+Later on that day, Sami Sully helped me with formatting how the questions would advance within a conditional if/else statement that set the requirement for the quiz to end. [Specifically lines 101 to 111 on script.js.]
+
+## Challenges
+
+Ultimately I feel that most of the parts to make the application work are here, but I couldn't get the logic to work for when a user clicks on the correct answer, specifically so that it would add points.
+
+I was able to connect the Highscores page via an event listener and get a working timer once the quiz started but without getting the logic to know which answer button was selected - I wasn't able to get the if/else conditional to work based on a wrong answer input or a correct answer input.
+
 
 ## Resources
 

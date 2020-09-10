@@ -4,7 +4,7 @@ console.log("Hello World");
 var startButton = document.getElementById("start-btn");
 var timerEl = document.getElementById("countdowntimer");
 var scoreCounter = document.getElementById("scorecounter");
-var highscores = document.getElementById("highscoresBtn");
+var highscoresBtn = document.getElementById("highscoresBtn");
 var startContainer = document.getElementById("startbox");
 var choiceBtnEl = document.getElementById("btngroup")
 var quizEl = document.getElementById("quiz");
@@ -15,12 +15,25 @@ var submitBtn = document.getElementById("submitbtn");
 var recordScore = document.getElementById("recordscore");
 var gameOver = document.getElementById("gameOver");
 var position = 0;
-var userScore = JSON.parse(localStorage.getItem("initials")) | [] 
+
 var initials = document.getElementById("initials");
+var highscoresdiv = document.getElementById("highscoresdiv");
+var clearBtn = document.getElementById("clear");
+var goBackBtn = document.getElementById("goback");
 
 
-    //WHEN I click the start button
-    //THEN a timer starts and I am presented WITH a question
+//If user clicks on Highscores button from Quiz Start Page
+highscoresBtn.addEventListener("click", highscores);
+
+function highscores(){
+    event.preventDefault();
+    startContainer.style.display = "none";
+    highscoresdiv.style.display = "block";
+    var user = JSON.parse(localStorage.getItem("user")) | []; 
+}
+
+//WHEN I click the start button
+//THEN a timer starts and I am presented WITH a question
 
 startButton.addEventListener("click", startGame);
 
@@ -36,16 +49,18 @@ function startGame() {
             secondsLeft--;
         timerEl.textContent = secondsLeft;
     
+            //If the timer reaches 0 then the game is over
             if(secondsLeft === 0) {
                 clearInterval(timerInterval);
-                //gameOver(); --- Need to advance to gameOver using a function defined below.
+                gameOver();
             }
         }, 1000);
     }
 
     setTime();
 
-    
+
+
     //WHEN I answer a question
     //THEN I am presented with another question
 
@@ -96,6 +111,8 @@ function startGame() {
     function loadQuiz(currentQuiz) {
         var quiz = quizData[currentQuiz];
 
+
+        //Determine when to stop advancing questions (if/else conditional?)
         if (questionEl !== 5) {
         //Loading the current quiz questions. DO NOT MOVE.
         questionEl.textContent = quiz.question; 
@@ -108,16 +125,31 @@ function startGame() {
         choiceC.onclick = questionClick;
         choiceD.onclick = questionClick;
 
+
+        //WHEN all questions are answered the game is over and it's time to for user to log their score.
         } else {
         gameOver();
         }
         function gameOver() {
             quizEl.style.display = "none";
             recordScore.style.display = "block";
+
+            //WHEN the game is over
+            //THEN I can save my initials and score
+            submitBtn.addEventListener("click", function(event){
+                event.preventDefault();
+
+            })
+
+            //create user object from submission
+            var user = "initials" + userScore;
+            console.log(user);
+            //need to aggregate the total score of the user and define it here.
+            localStorage.setItem(JSON.stringify(user));
         }
-
-
     }
+
+
     //Set up questionClick function to log button click and advance question.
 
     function questionClick() {
@@ -125,81 +157,28 @@ function startGame() {
         console.log(this);
         position++;
         loadQuiz(position);
-        //checkAnswer() function needed
-
-    //Determine when to stop advancing questions (if/else conditional?)
+        
 
 
-
-
-
-    //When I answer a question correctly or incorrectly
-
-    choiceBtnEl.addEventListener("click",function(){
+    //What needs to happen when  a user answers a question correctly or incorrectly
+    //Can't get this to work.
+    choiceBtnEl.addEventListener("click",function(questionClick){
         event.stopPropagation();
         userChoice();
     })
    
    function userChoice(){
     if(userChoice === quizData.correct) {
-
+        console.log("Answer is correct.");
+        scoreCounter = scoreCounter + 20;
+        correctAnswer.style.display = "block";
     } else {
-
+        console.log("Answer is wrong.");
+        secondsLeft = secondsLeft - 10;
+        wrongAnswer.style.display = "block";
 
     }
 
-   }
-   
-
-
-
 }
-    
-    
-    
-    
-    
-    
-    /*
-  
 
-
-
-    /*if() 
-            
-            //have it check for correct after that.
-            {
-                console.log("Answer is correct.");
-                scoreCounter = scoreCounter + 20;
-                correctAnswer.style.display = "block";
-
-
-            //WHEN I answer a question incorrectly
-            //THEN time is subtracted from the clock
-            } else {
-                console.log("Answer is wrong.");
-                secondsLeft = secondsLeft - 10;
-                wrongAnswer.style.display = "block";
-            }
-        });*/
-    
-
-
-    //WHEN all questions are answered or the timer reaches 0
-    //THEN the game is over
-
-
-
-
-
-    //WHEN the game is over
-    //THEN I can save my initials and score
-    
-    localStorage.setItem("initals",JSON.stringify(userScore));
-
-    
-
-//need to aggregate the total score of the user and define it here.
-
-
-}
+}}
