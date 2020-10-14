@@ -27,13 +27,15 @@ This assignment proved more difficult for me to fully execute specifically aroun
 
 Another issue I was having was in trying to record when a user clicked on the correct answer and to add points for that user to the score counter.
 
-At this point I was not able to finish the exercise wher I set the initials of the user into localStorage and called it back in the Highscores page.
+After further review, I re-organized my script.js file to more easily separate my quizData array, global variables, question variables, timer variables, functions, and event listeners. Doing this helped me better understand and format each part of the quiz's specific functions.
 
 ## Contributions / Credits
 
 On September 9th, 2020, TA - Stanley Lewis helped me understand how to hard code the logic for onclick event of my button options and advancing my questions.
 
 Later on that day, Sami Sully helped me with formatting how the questions would advance within a conditional if/else statement that set the requirement for the quiz to end. [Specifically lines 101 to 111 on script.js.]
+
+On 10-13-20, I went back through this exercise with my tutor, Andrew Hardemon who helped me troubleshoot a few small edits to my timer function, local storage elements and Highscores display.
 
 ## Challenges
 
